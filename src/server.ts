@@ -2,6 +2,6 @@ import http from "node:http";
 
 http
 	.createServer(() => {
-		console.log("Knock on the door!");
+		console.log("Hello bb ;)");
 	})
-	.listen(3000);
+	.listen(Number(process.env.PORT));
