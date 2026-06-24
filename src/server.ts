@@ -1,4 +1,6 @@
-import http from 'node:http';
+import express from 'express';
+
+const app = express();
 
 const users = [
 	{
@@ -15,18 +17,10 @@ const users = [
 	},
 ];
 
-http
-	.createServer((req, res) => {
-		if (req.url === 'users' && req.method === 'GET') {
-			res.writeHead(200, {
-				'content-type': 'application/json',
-			});
-			res.end(JSON.stringify(users));
-			return;
-		}
-		res.writeHead(404, {
-			'content-type': 'text/plain',
-		});
-		res.end('Not foun!');
-	})
-	.listen(Number(process.env.PORT));
+app.use(express.json());
+
+app.get('/users', (_req, res) => {
+	res.json(users);
+});
+
+app.listen(Number(process.env.PORT));
