@@ -1,7 +1,8 @@
-import { customers } from "../mocks/customer.mock.ts";
-import type { CreateCustomer, Customer, UpdateCustomer } from "../types.ts";
+import { customers } from '../mocks/customer.mock.ts';
 
-export function findAllcustomers(): Customer[] {
+import type { CreateCustomer, Customer, UpdateCustomer } from '../types.ts';
+
+export function findAllCustomers(): Customer[] {
 	return customers;
 }
 
@@ -9,7 +10,7 @@ export function findCustomerById(id: number): Customer {
 	const customer = customers.find((customer) => customer.id === id);
 
 	if (!customer) {
-		throw new Error(`Clente não encontrado.`);
+		throw new Error('Cliente não encontrado.');
 	}
 
 	return customer;
@@ -33,13 +34,12 @@ export function modifyCustomer(
 	id: number,
 	{ name, email, status }: UpdateCustomer,
 ) {
-	const customer = customers.find((customer) => {
-		return customer.id === id;
-	});
+	const customer = customers.find((customer) => customer.id === id);
 
 	if (!customer) {
-		throw new Error("Cliente não encontrado");
+		throw new Error('Cliente não encontrado.');
 	}
+
 	if (name) customer.name = name;
 	if (email) customer.email = email;
 	if (status !== undefined) customer.status = status;
@@ -48,11 +48,10 @@ export function modifyCustomer(
 }
 
 export function removeCustomer(id: number): void {
-	const index = customers.findIndex((customer) => {
-		return customer.id === id;
-	});
+	const index = customers.findIndex((customers) => customers.id === id);
+
 	if (index === -1) {
-		throw new Error("Cliente não encontrado.");
+		throw new Error('Cliente não encontrado.');
 	}
 
 	customers.splice(index, 1);

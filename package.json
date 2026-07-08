@@ -1,5 +1,5 @@
 {
-	"name": "corcoite-backend",
+	"name": "corcoiote-backend",
 	"type": "module",
 	"scripts": {
 		"dev": "node --watch --env-file=.env ./src/server.ts"
@@ -12,8 +12,6 @@
 		"typescript": "^6.0.3"
 	},
 	"dependencies": {
-		"express": "^5.2.1",
-		"package-lock.json": "^1.0.0",
-		"package.json": "^2.0.1"
+		"express": "^5.2.1"
 	}
 }
