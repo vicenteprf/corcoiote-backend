@@ -1,6 +1,6 @@
-import { invoices } from "../mocks/invoice.mock.ts";
-import type { CreateInvoice, Invoice, UpdateInvoice } from "../types.ts";
-import { findCustomerById } from "./customer.service.ts";
+import { invoices } from '../mocks/invoice.mock.ts';
+import type { CreateInvoice, Invoice, UpdateInvoice } from '../types.ts';
+import { findCustomerById } from './customer.service.ts';
 
 export function findAllInvoices(): Invoice[] {
 	return invoices;
@@ -25,7 +25,7 @@ export function insertInvoice({ value, customer_id }: CreateInvoice): Invoice {
 		id: id + 1,
 		value,
 		customer_id,
-		status: "Pending",
+		status: 'Pending',
 		create_At: new Date().toISOString(),
 	};
 
@@ -43,7 +43,7 @@ export function modifyInvoice(
 	});
 
 	if (!invoice) {
-		throw new Error("Nota não encontrado");
+		throw new Error('Nota não encontrado');
 	}
 	if (value) invoice.value = value;
 	if (customer_id) invoice.customer_id = customer_id;
@@ -57,7 +57,7 @@ export function removeInvoice(id: number): void {
 		return invoice.id === id;
 	});
 	if (index === -1) {
-		throw new Error("Nota não encontrado.");
+		throw new Error('Nota não encontrado.');
 	}
 
 	invoices.splice(index, 1);

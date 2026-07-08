@@ -1,6 +1,6 @@
-import type { Request, Response } from "express";
-import * as InvoiceService from "../services/invoices.service.ts";
-import type { CreateInvoice, UpdateInvoice } from "../types.ts";
+import type { Request, Response } from 'express';
+import * as InvoiceService from '../services/invoices.service.ts';
+import type { CreateInvoice, UpdateInvoice } from '../types.ts';
 
 export function getAllInvoice(_req: Request, res: Response) {
 	const invoices = InvoiceService.findAllInvoices();
