@@ -1,26 +1,18 @@
 import express from 'express';
+import { customers } from './mocks/customer.mock.ts';
 
 const app = express();
 
-const users = [
-	{
-		name: 'Cristiano Ronaldo',
-		status: true,
-	},
-	{
-		name: 'Lionel Messi',
-		status: true,
-	},
-	{
-		name: 'Neymar Junior',
-		status: false,
-	},
-];
-
 app.use(express.json());
 
-app.get('/users', (_req, res) => {
-	res.json(users);
+app.get('/customers', (_req, res) => {
+	res.status(200).json(customers);
+});
+
+app.use((_req, res) => {
+	res.status(404).json({
+		message: 'Not found!',
+	});
 });
 
 app.listen(Number(process.env.PORT));
