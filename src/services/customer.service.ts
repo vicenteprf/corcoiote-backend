@@ -6,7 +6,7 @@ export function findAllCustomers(): Customer[] {
 	return customers;
 }
 
-export function findAllCustomerById(id: number): Customer {
+export function findCustomerById(id: number): Customer {
 	const customer = customers.find((customer) => customer.id === id);
 
 	if (!customer) {
@@ -25,7 +25,6 @@ export function insertCustomer({ name, email }: CreateCustomer): Customer {
 		email,
 		status: true,
 	};
-
 	customers.push(customer);
 
 	return customer;

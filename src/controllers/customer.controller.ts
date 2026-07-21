@@ -3,20 +3,20 @@ import * as CustomerService from '../services/customer.service.ts';
 import type { CreateCustomer, UpdateCustomer } from '../types.ts';
 
 export function getAllCustomers(_req: Request, res: Response) {
-	const customer = CustomerService.findAllCustomers();
+	const customers = CustomerService.findAllCustomers();
 
-	res.status(200).json(customer);
+	res.status(200).json(customers);
 }
 
-export function getCustomersById(req: Request, res: Response) {
+export function getCustomerById(req: Request, res: Response) {
 	const id = Number(req.params.id);
 
-	const customer = CustomerService.findAllCustomerById(id);
+	const customer = CustomerService.findCustomerById(id);
 
 	res.status(200).json(customer);
 }
 
-export function createCustomers(req: Request, res: Response) {
+export function createCustomer(req: Request, res: Response) {
 	const { name, email } = req.body as CreateCustomer;
 
 	const customer = CustomerService.insertCustomer({
@@ -27,7 +27,7 @@ export function createCustomers(req: Request, res: Response) {
 	res.status(201).json(customer);
 }
 
-export function updateCustomers(req: Request, res: Response) {
+export function updateCustomer(req: Request, res: Response) {
 	const id = Number(req.params.id);
 
 	const { name, email, status } = req.body as UpdateCustomer;
@@ -37,7 +37,7 @@ export function updateCustomers(req: Request, res: Response) {
 	res.status(200).json(customer);
 }
 
-export function deleteCustomers(req: Request, res: Response) {
+export function deleteCustomer(req: Request, res: Response) {
 	const id = Number(req.params.id);
 
 	CustomerService.removeCustomer(id);

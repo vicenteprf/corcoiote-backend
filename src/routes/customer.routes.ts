@@ -4,13 +4,9 @@ import * as CustomerController from '../controllers/customer.controller.ts';
 const router = Router();
 
 router.get('/', CustomerController.getAllCustomers);
-
-router.get('/:id', CustomerController.getCustomersById);
-
-router.post('/', CustomerController.createCustomers);
-
-router.put('/:id', CustomerController.updateCustomers);
-
-router.delete('/:id', CustomerController.deleteCustomers);
+router.get('/:id', CustomerController.getCustomerById);
+router.post('/', CustomerController.createCustomer);
+router.put('/:id', CustomerController.updateCustomer);
+router.delete('/:id', CustomerController.deleteCustomer);
 
 export default router;
