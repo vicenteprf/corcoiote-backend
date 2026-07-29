@@ -1,6 +1,9 @@
 import type { Request, Response } from 'express';
+import type {
+	CreateCustomer,
+	UpdateCustomer,
+} from '../schemas/customer.schema.ts';
 import * as CustomerService from '../services/customer.service.ts';
-import type { CreateCustomer, UpdateCustomer } from '../types.ts';
 
 export function getAllCustomers(_req: Request, res: Response) {
 	const customers = CustomerService.findAllCustomers();
