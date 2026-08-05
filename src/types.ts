@@ -16,3 +16,8 @@ export type Invoice = {
 export type CreateInvoice = Omit<Invoice, 'id' | 'status' | 'create_At'>;
 type InvoiceWithoutId = Omit<Invoice, 'id'>;
 export type UpdateInvoice = Partial<InvoiceWithoutId>;
+
+export type ValidationFieldError = {
+	field: string;
+	message: string;
+};
