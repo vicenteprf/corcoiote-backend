@@ -1,7 +1,9 @@
-thumbs.db
+Thumbs.db
 .DS_Store
 *.log
 
 node_modules
 
 .env
+
+prisma/generated
