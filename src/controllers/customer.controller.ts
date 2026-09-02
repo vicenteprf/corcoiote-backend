@@ -20,11 +20,12 @@ export function getCustomerById(req: Request, res: Response) {
 }
 
 export function createCustomer(req: Request, res: Response) {
-	const { name, email } = req.body as CreateCustomer;
+	const { name, email, imageUrl } = req.body as CreateCustomer;
 
 	const customer = CustomerService.insertCustomer({
 		name,
 		email,
+		imageUrl,
 	});
 
 	res.status(201).json(customer);
@@ -33,9 +34,13 @@ export function createCustomer(req: Request, res: Response) {
 export function updateCustomer(req: Request, res: Response) {
 	const id = Number(req.params.id);
 
-	const { name, email, status } = req.body as UpdateCustomer;
+	const { name, email, imageUrl } = req.body as UpdateCustomer;
 
-	const customer = CustomerService.modifyCustomer(id, { name, email, status });
+	const customer = CustomerService.modifyCustomer(id, {
+		name,
+		email,
+		imageUrl,
+	});
 
 	res.status(200).json(customer);
 }

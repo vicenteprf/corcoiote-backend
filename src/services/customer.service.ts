@@ -26,10 +26,11 @@ export async function findCustomerById(id: number): Promise<Customer> {
 	return customer;
 }
 
-export async function insertCustomer(
-	id: number,
-	{ name, email, imageUrl }: CreateCustomer,
-): Promise<Customer> {
+export async function insertCustomer({
+	name,
+	email,
+	imageUrl,
+}: CreateCustomer): Promise<Customer> {
 	const customer = await prisma.customer.create({
 		data: {
 			name,
