@@ -38,6 +38,7 @@ model Invoice {
   amount     Int
   status     InvoiceStatus
   date       DateTime
+  createdAt DateTime @default(now()) @map("create_at")
   customerId Int           @map("customer_id")
   customer   Customer      @relation(fields: [customerId], references: [id], onDelete: Cascade)
 
