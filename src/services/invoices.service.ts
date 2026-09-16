@@ -1,12 +1,9 @@
 import { NotFoundError } from '../errors/index.ts';
 import prisma from '../lib/prisma.ts';
-import { invoices } from '../mocks/invoice.mock.ts';
 import type {
 	CreateInvoice,
 	UpdateInvoice,
 } from '../schemas/invoice.schema.ts';
-import type { Invoice } from '../types.ts';
-import { findCustomerById } from './customer.service.ts';
 
 export async function findAllInvoices(page: number) {
 	const invoices = await prisma.invoice.findMany({

@@ -1,9 +1,14 @@
 import type { Request, Response } from 'express';
+import type {
+	CreateInvoice,
+	UpdateInvoice,
+} from '../schemas/invoice.schema.ts';
 import * as InvoiceService from '../services/invoices.service.ts';
-import type { CreateInvoice, UpdateInvoice } from '../types.ts';
 
-export function getAllInvoice(_req: Request, res: Response) {
-	const invoices = InvoiceService.findAllInvoices();
+export function getAllInvoice(req: Request, res: Response) {
+	const page = Number(req.query.page) || 1;
+
+	const invoices = InvoiceService.findAllInvoices(page);
 
 	res.status(200).json(invoices);
 }
@@ -17,11 +22,13 @@ export function getInvoiceById(req: Request, res: Response) {
 }
 
 export function createInvoice(req: Request, res: Response) {
-	const { value, customer_id } = req.body as CreateInvoice;
+	const { amount, customerId, status, date } = req.body as CreateInvoice;
 
 	const invoice = InvoiceService.insertInvoice({
-		value,
-		customer_id,
+		amount,
+		customerId,
+		status,
+		date,
 	});
 
 	res.status(201).json(invoice);
@@ -30,12 +37,13 @@ export function createInvoice(req: Request, res: Response) {
 export function updateInvoice(req: Request, res: Response) {
 	const id = Number(req.params.id);
 
-	const { value, status, customer_id } = req.body as UpdateInvoice;
+	const { amount, customerId, status, date } = req.body as UpdateInvoice;
 
 	const invoice = InvoiceService.modifyInvoice(id, {
-		value,
+		amount,
+		customerId,
 		status,
-		customer_id,
+		date,
 	});
 
 	res.status(200).json(invoice);
