@@ -5,12 +5,15 @@ export type Customer = {
 	imageUrl: string | null;
 };
 
+type InvoiceStatus = 'Pending' | 'Paid';
+
 export type Invoice = {
 	id: number;
 	value: string;
-	customer_id: number;
-	status: 'Pending' | 'Paid';
-	create_At: string;
+	customerId: number;
+	status: InvoiceStatus;
+	createAt: Date;
+	date: Date;
 };
 
 export type CreateInvoice = Omit<Invoice, 'id' | 'status' | 'create_At'>;
