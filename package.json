@@ -3,7 +3,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "node --watch --env-file=.env ./src/server.ts",
-		"test": "node --env-file=.env.test ./node_modules/jest/bin/jest.js --runInBand"
+		"test": "node --watch --env-file=.env.test ./node_modules/jest/bin/jest.js --runInBand"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.5.0",

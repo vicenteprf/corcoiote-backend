@@ -5,24 +5,24 @@ import type {
 } from '../schemas/customer.schema.ts';
 import * as CustomerService from '../services/customer.service.ts';
 
-export function getAllCustomers(_req: Request, res: Response) {
-	const customers = CustomerService.findAllCustomers();
+export async function getAllCustomers(_req: Request, res: Response) {
+	const customers = await CustomerService.findAllCustomers();
 
 	res.status(200).json(customers);
 }
 
-export function getCustomerById(req: Request, res: Response) {
+export async function getCustomerById(req: Request, res: Response) {
 	const id = Number(req.params.id);
 
-	const customer = CustomerService.findCustomerById(id);
+	const customer = await CustomerService.findCustomerById(id);
 
 	res.status(200).json(customer);
 }
 
-export function createCustomer(req: Request, res: Response) {
+export async function createCustomer(req: Request, res: Response) {
 	const { name, email, imageUrl } = req.body as CreateCustomer;
 
-	const customer = CustomerService.insertCustomer({
+	const customer = await CustomerService.insertCustomer({
 		name,
 		email,
 		imageUrl,
@@ -31,12 +31,12 @@ export function createCustomer(req: Request, res: Response) {
 	res.status(201).json(customer);
 }
 
-export function updateCustomer(req: Request, res: Response) {
+export async function updateCustomer(req: Request, res: Response) {
 	const id = Number(req.params.id);
 
 	const { name, email, imageUrl } = req.body as UpdateCustomer;
 
-	const customer = CustomerService.modifyCustomer(id, {
+	const customer = await CustomerService.modifyCustomer(id, {
 		name,
 		email,
 		imageUrl,
@@ -45,10 +45,10 @@ export function updateCustomer(req: Request, res: Response) {
 	res.status(200).json(customer);
 }
 
-export function deleteCustomer(req: Request, res: Response) {
+export async function deleteCustomer(req: Request, res: Response) {
 	const id = Number(req.params.id);
 
-	CustomerService.removeCustomer(id);
+	await CustomerService.removeCustomer(id);
 
 	res.status(204).send();
 }

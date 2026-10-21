@@ -16,6 +16,7 @@ export default function errorHandler(
 		res
 			.status(error.statusCode)
 			.json({ message: error.message, fields: error.fields });
+		return;
 	}
 
 	console.log(error);
